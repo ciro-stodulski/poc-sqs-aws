@@ -1,7 +1,7 @@
 # Teste de Carga com o Sistema de Mensagens Baseado em SQS (AWS)
 
 ### Objetivo do Teste
-O objetivo deste teste é avaliar a performance e a consistência de um sistema de mensagens baseado em SQS para registrar transações de produtos em um banco de dados, sob diferentes configurações de fila, sem o uso de lock pessimista no banco de dados para tratar a concorrência.
+O objetivo deste teste é avaliar a performance e a consistência de um sistema de mensagens baseado em SQS para registrar transações de produtos em um banco de dados, sob diferentes configurações de fila.
 
 ### Configuração Inicial
 - **Arquitetura:**
@@ -86,11 +86,8 @@ Este teste obteve sucesso, garantindo a consistência dos dados e um tempo de re
 ## Conclusão
 
 **Comparação dos Resultados:**
-- O uso de SQS FIFO garantiu a consistência desejada nas transações, enquanto o SQS sem FIFO não conseguiu manter a consistência esperada.
-
+- O uso de SQS FIFO garantiu a consistência desejada nas transações, enquanto o SQS sem FIFO não conseguiu manter a consistência esperado sem o uso de lock pessimista no banco de dados para tratar a concorrência, evitando assim alto processamento demasiado no banco de dados.
+- 
 **Lições Aprendidas:**
 - A importância de utilizar filas FIFO para garantir a ordem e a consistência das mensagens em sistemas críticos.
 
-**Próximos Passos:**
-- Explorar outras configurações de filas e instâncias para otimizar ainda mais a performance.
-- Implementar mecanismos de monitoramento e alerta para garantir a saúde do sistema.
